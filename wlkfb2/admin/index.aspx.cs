@@ -43,20 +43,20 @@ public partial class teacherMain : System.Web.UI.Page
         string sqlStr = "";
         if (DropDownList1.SelectedIndex == 0&&DropDownList2.SelectedIndex==0)
         {
-            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,case Section when 0 then '技术部' when 1 then '办公室' when 2 then '宣传部' end Section  from MemberTable where MemberState=1";
+            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Section  from MemberTable where MemberState=1";
         }
         else if(DropDownList1.SelectedIndex == 0 && DropDownList2.SelectedIndex != 0)
         {
-            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,case Section when 0 then '技术部' when 1 then '办公室' when 2 then '宣传部' end Section  from MemberTable where MemberState=1 and Memtime='" + dr2+"'";
+            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Section from MemberTable where MemberState=1 and Memtime='" + dr2+"'";
         }
         else if(DropDownList1.SelectedIndex != 0 && DropDownList2.SelectedIndex == 0)
         {
-            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,case Section when 0 then '技术部' when 1 then '办公室' when 2 then '宣传部' end Section  from MemberTable where MemberState=1 and Section='" + dr1 + "'";
+            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Section  from MemberTable where MemberState=1 and Section='" + dr1 + "'";
 
         }
         else if (DropDownList1.SelectedIndex != 0 && DropDownList2.SelectedIndex != 0)
         {
-            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,case Section when 0 then '技术部' when 1 then '办公室' when 2 then '宣传部' end Section  from MemberTable where MemberState=1 and Section='" + dr1 + "' and Memtime='"+dr2+"'";
+            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Sectoin  from MemberTable where MemberState=1 and Section='" + dr1 + "' and Memtime='"+dr2+"'";
 
         }
 
@@ -140,18 +140,18 @@ public partial class teacherMain : System.Web.UI.Page
             Position = "4";
         }
         string Section = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox11")).Text;
-        if (Section == "技术部")
-        {
-            Section = "0";
-        }
-        else if (Section == "办公室")
-        {
-            Section = "1";
-        }
-        else if (Section == "宣传部")
-        {
-            Section = "2";
-        }
+        //if (Section == "技术部")
+        //{
+        //    Section = "0";
+        //}
+        //else if (Section == "办公室")
+        //{
+        //    Section = "1";
+        //}
+        //else if (Section == "宣传部")
+        //{
+        //    Section = "2";
+        //}
         string sql = "update MemberTable set Name='" + Name + "',Sex='" + Sex + "',Telphone='"+Telphone+"',StartTime='"+StartTime+ "',MemberState='"+ MemberState + "',MemberNum='"+ MemberNum + "',MemDepartment='"+ MemDepartment + "',Memdept='"+ Memdept + "',Memtime='"+ Memtime + "',Position='"+ Position + "',Section='"+Section+"' where MemberTable.id='"+abc+"'";
         
         Class1.update(sql);
@@ -202,5 +202,19 @@ public partial class teacherMain : System.Web.UI.Page
         GridView1.EditIndex = -1;
         GVBind_Mem();
 
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        String name = TextBox12.Text;
+        if (RadioButton1.Checked)
+        {
+            String sex = RadioButton1.Text;
+        }
+        else
+        {
+            String sex = RadioButton2.Text;
+        }
+        
     }
 }
