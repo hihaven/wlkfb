@@ -120,13 +120,13 @@
                     <div class="hero-unit">
                         <h2 style="text-align: center;">正式成员</h2>
                         请选择部门：<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                            <asp:ListItem Value="全体成员">全体成员</asp:ListItem>
-                            <asp:ListItem Value="0">技术部</asp:ListItem>
-                            <asp:ListItem Value="1">办公室</asp:ListItem>
-                            <asp:ListItem Value="2">宣传部</asp:ListItem>
+                            <asp:ListItem Value="0">全体成员</asp:ListItem>
+                            <asp:ListItem Value="技术部">技术部</asp:ListItem>
+                            <asp:ListItem Value="办公室">办公室</asp:ListItem>
+                            <asp:ListItem Value="宣传部">宣传部</asp:ListItem>
                         </asp:DropDownList>
                         请选择年级：<asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
-                            <asp:ListItem Value="请选择">请选择</asp:ListItem>
+                            <asp:ListItem Value="0">请选择</asp:ListItem>
                             <asp:ListItem>2012</asp:ListItem>
                             <asp:ListItem>2013</asp:ListItem>
                             <asp:ListItem>2014</asp:ListItem>
@@ -341,9 +341,9 @@
         <asp:Label ID="lblExamState" runat="server" Visible="false"></asp:Label>
         <asp:Label ID="lblExamId" runat="server" Visible="false"></asp:Label>
 
-        <!-- 模态框 -->
-        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+         <!-- 模态框 -->
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -358,7 +358,7 @@
                                     <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox></td>
                             </tr>
                             <tr><td>照片：</td><td>
-                                <asp:Image ID="Image1" runat="server" /></td></tr>
+                                <asp:FileUpload ID="FileUpload1" runat="server" /> <asp:Image ID="Image1" runat="server" /></td></tr>
                             <tr>
                                 <td>
                                     <asp:Label ID="Label13" runat="server" Text="性别："></asp:Label></td>
@@ -417,6 +417,5 @@
         </div>
         <!-- /模态框 -->
     </form>
-
 </body>
 </html>

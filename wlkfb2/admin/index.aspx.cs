@@ -13,15 +13,7 @@ public partial class teacherMain : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["MANAGER_ID"] == null || string.IsNullOrEmpty(Session["MANAGER_ID"].ToString()))
-        //{
-        //    Response.Redirect("login.aspx");
-        //}
-        //else
-        //{
-        //    Panel1.Visible = true;
-        //}
-        // DDLBind_Bumen();
+        
         if (!IsPostBack) { 
         GVBind_Mem();
         }
@@ -56,7 +48,7 @@ public partial class teacherMain : System.Web.UI.Page
         }
         else if (DropDownList1.SelectedIndex != 0 && DropDownList2.SelectedIndex != 0)
         {
-            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Sectoin  from MemberTable where MemberState=1 and Section='" + dr1 + "' and Memtime='"+dr2+"'";
+            sqlStr = "select Name ,case Sex when 0 then '男' when 1 then '女' end Sex, Telphone ,StartTime,case MemberState when 1 then '在职' end MemberState,MemberNum,MemDepartment,Memdept,Memtime,case Position when 0 then '干事' when 1 then '副部长' when 2 then '部长' when 3 then '老师' end Position,Section  from MemberTable where MemberState=1 and Section='" + dr1 + "' and Memtime='"+dr2+"'";
 
         }
 
@@ -206,15 +198,6 @@ public partial class teacherMain : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        String name = TextBox12.Text;
-        if (RadioButton1.Checked)
-        {
-            String sex = RadioButton1.Text;
-        }
-        else
-        {
-            String sex = RadioButton2.Text;
-        }
         
     }
 }
